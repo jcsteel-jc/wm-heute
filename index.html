@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="WM Heute" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <title>WM Heute</title>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">⚽ WM 2026</p>
+        <h1>WM Heute</h1>
+        <p id="todayLabel" class="date"></p>
+      </div>
+      <button id="refreshButton" class="refresh" aria-label="Aktualisieren">↻</button>
+    </section>
+
+    <section class="card">
+      <h2>Heute</h2>
+      <div id="todayMatches" class="matches"></div>
+    </section>
+
+    <section class="card muted-card">
+      <h2>Morgen</h2>
+      <div id="tomorrowMatches" class="matches"></div>
+    </section>
+
+    <footer>
+      <p>Werbefrei · Eigene Mini-App von Jörg · Daten lokal in <code>matches.js</code></p>
+    </footer>
+  </main>
+
+  <script src="matches.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
