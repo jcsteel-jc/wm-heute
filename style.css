@@ -113,13 +113,21 @@ h2 {
 }
 
 .germany {
-  background: var(--accent-soft);
+  background: linear-gradient(90deg, rgba(255, 204, 0, 0.28), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 204, 0, 0.65);
   margin: 0 -8px;
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 16px;
 }
 
+.germany .teams::before {
+  content: "🇩🇪 ";
+}
+
+.germany .teams {
+  color: #fff7cc;
+}
 .empty {
   color: var(--muted);
   line-height: 1.45;
