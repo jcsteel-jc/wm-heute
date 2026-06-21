@@ -1,6 +1,5 @@
 window.WM_MATCHES = [
-  { kickoff: '2026-06-20T22:00:00+02:00', home: 'Deutschland', away: 'Elfenbeinküste', group: 'Gruppe E', stage: 'Gruppenphase', city: '' },
-  { kickoff: '2026-06-21T02:00:00+02:00', home: 'Ecuador', away: 'Curaçao', group: 'Gruppe E', stage: 'Gruppenphase', city: '' },
+  { kickoff: '2026-06-20T22:00:00+02:00', home: 'Deutschland', away: 'Elfenbeinküste', homeScore: 2, awayScore: 1, group: 'Gruppe E', stage: 'Gruppenphase', city: '' },  { kickoff: '2026-06-21T02:00:00+02:00', home: 'Ecuador', away: 'Curaçao', group: 'Gruppe E', stage: 'Gruppenphase', city: '' },
   { kickoff: '2026-06-21T06:00:00+02:00', home: 'Tunesien', away: 'Japan', group: 'Gruppe F', stage: 'Gruppenphase', city: '' },
   { kickoff: '2026-06-21T18:00:00+02:00', home: 'Spanien', away: 'Saudi-Arabien', group: 'Gruppe H', stage: 'Gruppenphase', city: '' },
   { kickoff: '2026-06-21T21:00:00+02:00', home: 'Belgien', away: 'Iran', group: 'Gruppe G', stage: 'Gruppenphase', city: '' },
