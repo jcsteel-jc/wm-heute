@@ -1,3 +1,4 @@
+const FIXTURES_URL = "https://www.thestatsapi.com/world-cup/data/fixtures.json";
 const formatter = new Intl.DateTimeFormat('de-DE', {
   weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
 });
@@ -9,6 +10,55 @@ const shortDateFormatter = new Intl.DateTimeFormat('de-DE', {
 const timeFormatter = new Intl.DateTimeFormat('de-DE', {
   hour: '2-digit', minute: '2-digit'
 });
+
+async function loadMatchesFromApi() {
+  const response = await fetch(FIXTURES_URL);
+  const data = await response.json();
+
+  window.WM_MATCHES = data.fixtures.map(match => ({
+    kickoff: match.kickoffUtc,
+    home: translateTeam(match.homeTeam),
+    away: translateTeam(match.awayTeam),
+    group: match.group ? `Gruppe ${match.group}` : "",
+    stage: translateStage(match.stage),
+    city: match.hostCity || "",
+    stadium: match.stadium || ""
+  }));
+}
+function translateTeam(team) {
+  const teams = {
+    "Germany": "Deutschland",
+    "Curaçao": "Curaçao",
+    "Curacao": "Curaçao",
+    "Ivory Coast": "Elfenbeinküste",
+    "Korea Republic": "Südkorea",
+    "Czechia": "Tschechien",
+    "South Africa": "Südafrika",
+    "United States": "USA",
+    "Bosnia and Herzegovina": "Bosnien-Herzegowina",
+    "Saudi Arabia": "Saudi-Arabien",
+    "Cape Verde": "Kap Verde",
+    "New Zealand": "Neuseeland",
+    "DR Congo": "DR Kongo"
+  };
+
+  return teams[team] || team;
+}
+
+function translateStage(stage) {
+  const stages = {
+    "group-stage": "Gruppenphase",
+    "round-of-32": "Sechzehntelfinale",
+    "round-of-16": "Achtelfinale",
+    "quarter-final": "Viertelfinale",
+    "semi-final": "Halbfinale",
+    "third-place": "Spiel um Platz 3",
+    "final": "Finale"
+  };
+
+  return stages[stage] || stage;
+}
+
 
 function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -131,5 +181,9 @@ function render() {
   renderMatches('tomorrowMatches', tomorrow);
 }
 
-document.getElementById('refreshButton').addEventListener('click', render);
-render();
+document.getElementById('refreshButton').addEventListener('click', async () => {
+  await loadMatchesFromApi();
+  render();
+});
+
+loadMatchesFromApi().then(render);
