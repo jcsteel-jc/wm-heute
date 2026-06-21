@@ -119,8 +119,8 @@ container.innerHTML = games.map(game => {
 
   const status =
     game.date < now
-      ? 'OK'
-      : 'NEXT';
+      ? '✅'
+      : '➡️';
 
   return `
     <article class="match germany">
