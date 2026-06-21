@@ -113,15 +113,32 @@ function renderGermanyMatches() {
     .filter(isGermany)
     .sort((a, b) => a.date - b.date);
 
-  container.innerHTML = games.map(game => `
+ const now = new Date();
+
+container.innerHTML = games.map(game => {
+
+  const status =
+    game.date < now
+      ? '✓'
+      : '○';
+
+  return `
     <article class="match germany">
-      <div class="time">${shortDateFormatter.format(game.date)}<br>${scoreText(game)}</div>
+      <div class="time">
+        ${status}<br>
+        ${shortDateFormatter.format(game.date)}
+        <br>
+        ${scoreText(game)}
+      </div>
+
       <div>
         <div class="teams">${game.home} – ${game.away}</div>
         <div class="meta">${[game.group, game.stage].filter(Boolean).join(' · ')}</div>
       </div>
     </article>
-  `).join('');
+  `;
+}).join('');
+  
 }
 
 function calculateGermanyStanding() {
